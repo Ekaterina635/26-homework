@@ -1,21 +1,20 @@
-//1
-document.getElementById("outer").addEventListener("click", () => {
-    console.log("Клик по ВНЕШНЕМУ div");
-  });
+//1+2
+    const outer = document.getElementById("outer");
+    const middle = document.getElementById("middle");
+    const inner = document.getElementById("inner");
 
-  document.getElementById("middle").addEventListener("click", () => {
-    console.log("Клик по СРЕДНЕМУ div");
-  });
+    outer.addEventListener("click", () => {
+      console.log("Клик по outer");
+    });
 
-  document.getElementById("inner").addEventListener("click", () => {
-    console.log("Клик по ВНУТРЕННЕМУ div");
-  });
+    middle.addEventListener("click", (event) => {
+      console.log("Клик по middle");
+      event.stopPropagation(); 
+    });
 
-//2
-document.getElementById("middle").addEventListener("click", (event) => {
-  console.log("Клик по СРЕДНЕМУ div (всплытие остановлено)");
-  event.stopPropagation(); 
-});
+    inner.addEventListener("click", () => {
+      console.log("Клик по inner");
+    });
 
 //3
 const form = document.getElementById("myForm");
@@ -35,4 +34,5 @@ const form = document.getElementById("myForm");
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     console.log("Форма отправлена!");
+
   });
